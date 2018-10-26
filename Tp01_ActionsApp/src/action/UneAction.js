@@ -2,21 +2,24 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import BoutonAction from './BoutonAction'
 
+
 /**
  * Composant représentant une action.
  *
  * TODO modifier le code pour afficher le titre de l'action et les boutons associés.
  */
-const UneAction = () => (
+const UneAction = ({action, onAlterClicked}) => (
     <View style={styles.conteneurUneAction}>
         <Text style={styles.texteUneAction}>
-            Ici bientôt le titre de l'action
+            {action.name}
         </Text>
         <View style={styles.boutons}>
-
+            <BoutonAction onClicked={(e) => onAlterClicked(action, e)} nom='Terminer' type='termine' state={action.state}/>
+            <BoutonAction onClicked={(e) => onAlterClicked(action, e)} nom='Supprimer' type='supprimer'/>
         </View>
     </View>
 )
+
 
 const styles = StyleSheet.create({
     conteneurUneAction: {
